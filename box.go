@@ -41,7 +41,7 @@ func NewBox(path string) Box {
 	// this little hack courtesy of the `-cover` flag!!
 	cov := filepath.Join("_test", "_obj_test")
 	cd = strings.Replace(cd, string(filepath.Separator)+cov, "", 1)
-	if !filepath.IsAbs(cd) && cd != "" {
+	if !strings.HasPrefix(cd, "\\") && !filepath.IsAbs(cd) && cd != "" {
 		cd = filepath.Join(GoPath(), "src", cd)
 	}
 
